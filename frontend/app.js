@@ -62,20 +62,29 @@ canvas.onclick = function(e) {
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // edges
+    // ===== DRAW EDGES =====
     graph.edges.forEach(e => {
         let a = graph.nodes[e.from];
         let b = graph.nodes[e.to];
 
+        // edge line
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
         ctx.lineTo(b.x, b.y);
         ctx.strokeStyle = "#888";
         ctx.lineWidth = 2;
         ctx.stroke();
+
+        // 🔥 DRAW WEIGHT
+        let midX = (a.x + b.x) / 2;
+        let midY = (a.y + b.y) / 2;
+
+        ctx.fillStyle = "white";
+        ctx.font = "12px Arial";
+        ctx.fillText(e.weight, midX, midY);
     });
 
-    // nodes
+    // ===== DRAW NODES =====
     graph.nodes.forEach((n, i) => {
         ctx.beginPath();
         ctx.arc(n.x, n.y, 10, 0, Math.PI * 2);
@@ -90,7 +99,18 @@ function draw() {
         ctx.fillText(i, n.x - 4, n.y - 15);
     });
 
-    // preview edge
+    // 🔥 HIGHLIGHT SELECTED NODE (for edge creation)
+    if (selected !== null) {
+        let n = graph.nodes[selected];
+
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 15, 0, Math.PI * 2);
+        ctx.strokeStyle = "yellow";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+    }
+
+    // ===== PREVIEW EDGE =====
     if (mode === "edge" && selected !== null) {
         let a = graph.nodes[selected];
 
@@ -104,6 +124,7 @@ function draw() {
         ctx.setLineDash([]);
     }
 }
+
 
 // ================= RUN ALGORITHM =================
 window.runAlgo = async (type) => {
