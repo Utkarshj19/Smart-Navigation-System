@@ -1,0 +1,43 @@
+body {
+    background: #121212;
+    color: white;
+    text-align: center;
+    font-family: Arial;
+}
+
+canvas {
+    background: #1e1e1e;
+    margin: 20px;
+    border-radius: 10px;
+    cursor: crosshair;
+}
+
+/* ===== BUTTON STYLE ===== */
+button {
+    margin: 6px;
+    padding: 12px 18px;
+    background: linear-gradient(135deg, #00adb5, #008c9e);
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+/* hover effect */
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 173, 181, 0.4);
+}
+
+/* click effect */
+button:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 6px rgba(0, 173, 181, 0.3);
+}
+
+/* active mode highlight */
+button.active {
+    background: #ff5722;
+}

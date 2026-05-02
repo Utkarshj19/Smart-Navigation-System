@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Navigation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>🚗 Smart Navigation Visualizer</h1>
+
+<canvas id="canvas" width="800" height="500"></canvas>
+
+<div class="controls">
+<button onclick="setMode('node', this)">Add Node</button>
+<button onclick="setMode('edge', this)">Add Edge</button>
+<button onclick="setMode('source', this)">Source</button>
+<button onclick="setMode('dest', this)">Destination</button>
+
+    <button onclick="runAlgo('bfs')">BFS</button>
+    <button onclick="runAlgo('dfs')">DFS</button>
+    <button onclick="runAlgo('astar')">A*</button>
+    <button onclick="runAlgo('floyd')">Floyd</button>
+</div>
+
+<pre id="output"></pre>
+
+<script type="module" src="app.js"></script>
+
+</body>
+</html>
